@@ -14,8 +14,6 @@ RUN yarn install --production
 COPY . .
 # Build the app
 # RUN yarn build
-RUN cat ./scripts/build.sh
-RUN pwd
 RUN ./scripts/build.sh
 
 # Bundle static assets with nginx

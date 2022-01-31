@@ -1,3 +1,4 @@
+var fs = require('fs')
 var express = require('express')
 var app = express()
 
@@ -15,6 +16,17 @@ app.get('/env', function (req, res) {
 
   res.send(newObj)
 })
+
+app.get('/ver', function (req, res) {
+  fs.readFile(__dirname + '/ver.txt', 'utf8', function (err, data) {
+    if (err) {
+      res.send(JSON.stringify(err))
+      return
+    }
+    res.send(data)
+  })
+})
+
 app.get('/', function (req, res) {
   res.send('Hello World')
 })
